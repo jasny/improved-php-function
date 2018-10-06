@@ -42,7 +42,7 @@ If the callable is a variable you can typically call it directly and don't need 
 useful when the callable is a property.
 
 ```php
-use Itr as i;
+use Improved as i;
 
 class Foo
 {
@@ -128,10 +128,10 @@ $product = i\iterable_reduce($list, i\function_operator('*'), 1);
 Create a partial function, where some the arguments have been specified.
 
 The returned closure requires an argument for each placeholder, which is defined as constant
-`Itr\FUNCTION_ARGUMENT_PLACEHOLDER`. Typically create an alias `___` for it with the `use const` syntax.
+`Improved\FUNCTION_ARGUMENT_PLACEHOLDER`. Typically create an alias `___` for it with the `use const` syntax.
 
 ```php
-use Itr as i;
+use Improved as i;
 
 $fn = function($word) {
     return i\string_ends_with($word, 'th');
@@ -141,8 +141,8 @@ $fn = function($word) {
 Can be rewritten as
 
 ```php
-use Itr as i;
-use const Itr\FUNCTION_ARGUMENT_PLACEHOLDER as ___;
+use Improved as i;
+use const Improved\FUNCTION_ARGUMENT_PLACEHOLDER as ___;
 
 $fn = i\function_partial(i\string_ends_with, ___, 'th');
 ``` 
@@ -150,8 +150,8 @@ $fn = i\function_partial(i\string_ends_with, ___, 'th');
 The callable may also be an operator. The following are equivalent:
 
 ```php
-use Itr as i;
-use const Itr\FUNCTION_ARGUMENT_PLACEHOLDER as ___;
+use Improved as i;
+use const Improved\FUNCTION_ARGUMENT_PLACEHOLDER as ___;
 
 $tenthOf = function_partial(function_operator('/'), ___, 10));
 $tenthOf = function_partial('/', ___, 10);
