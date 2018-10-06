@@ -8,6 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Ipl\function_call_named
+ * @covers \Ipl\_function_get_params
  */
 class FunctionCallNamedTest extends TestCase
 {
