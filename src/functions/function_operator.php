@@ -12,18 +12,21 @@ namespace Ipl;
  */
 function function_operator(string $operator): callable
 {
-    if (!array_key_exists($operator, _operator_ref_table)) {
+    if (!array_key_exists($operator, _OPERATOR_REF_TABLE)) {
         $msg = "Failed to create callable from operator: unknown or unsupported operator '%s'";
         throw new \InvalidArgumentException(sprintf($msg, $operator));
     }
 
-    return _operator_ref_table[$operator];
+    /** @var callable $fn */
+    $fn = _OPERATOR_REF_TABLE[$operator];
+
+    return $fn;
 }
 
 /**
- * @internal 
+ * @internal
  */
-const _operator_ref_table = [
+const _OPERATOR_REF_TABLE = [
     '+'   => 'Ipl\\operator_addition',
     '-'   => 'Ipl\\operator_subtraction',
     '*'   => 'Ipl\\operator_multiplication',
@@ -300,8 +303,8 @@ function operator_concatenation($a, $b)
  * Logical and; '&&' operator
  * @internal
  *
- * @param mixed $a
- * @param mixed $b
+ * @param bool $a
+ * @param bool $b
  * @return bool
  */
 function operator_and($a, $b)
@@ -313,8 +316,8 @@ function operator_and($a, $b)
  * Logical or; '||' operator
  * @internal
  *
- * @param mixed $a
- * @param mixed $b
+ * @param bool $a
+ * @param bool $b
  * @return bool
  */
 function operator_or($a, $b)
@@ -326,8 +329,8 @@ function operator_or($a, $b)
  * Logical xor; 'xor' operator
  * @internal
  *
- * @param mixed $a
- * @param mixed $b
+ * @param bool $a
+ * @param bool $b
  * @return bool
  */
 function operator_xor($a, $b)

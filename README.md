@@ -9,7 +9,7 @@ IPL function handling
 [![Packagist Stable Version](https://img.shields.io/packagist/v/improved-php-library/function.svg)](https://packagist.org/packages/improved-php-library/function)
 [![Packagist License](https://img.shields.io/packagist/l/improved-php-library/function.svg)](https://packagist.org/packages/improved-php-library/function)
 
-PHP library for function handling and functional programming.
+Library for function handling and functional programming.
 
 This library provides a set of consistent functions for PHP. You should always use these functions rather than the ones
 provided by PHP natively.

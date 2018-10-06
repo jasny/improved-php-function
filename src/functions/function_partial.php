@@ -13,8 +13,8 @@ namespace Ipl;
  */
 function function_partial($callable, ...$args): callable
 {
-    if (is_string($callable) && strlen($callable) <= 3 && array_key_exists($callable, _operator_ref_table)) {
-        $callable = _operator_ref_table[$callable];
+    if (is_string($callable) && strlen($callable) <= 3 && array_key_exists($callable, _OPERATOR_REF_TABLE)) {
+        $callable = _OPERATOR_REF_TABLE[$callable];
     }
 
     if (!is_callable($callable)) {

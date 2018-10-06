@@ -12,7 +12,7 @@ namespace Ipl;
  */
 function function_compose(callable ...$callables): callable
 {
-    return function($value) use ($callables) {
+    return function ($value) use ($callables) {
         foreach ($callables as $callable) {
             $value = $callable($value);
         }

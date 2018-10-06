@@ -2,6 +2,8 @@ parameters:
     level: 7
     paths:
         - src
+    ignoreErrors:
+        - "#Negated boolean is always true#"
 includes:
   	- vendor/phpstan/phpstan-strict-rules/rules.neon
 
