@@ -5,17 +5,17 @@
 
 declare(strict_types=1);
 
-namespace Ipl;
+namespace Improved;
 
 /** @ignore */
-const function_call = "Ipl\\function_call";
+const function_call = "Improved\\function_call";
 /** @ignore */
-const function_call_named = "Ipl\\function_call_named";
+const function_call_named = "Improved\\function_call_named";
 /** @ignore */
-const function_compose = "Ipl\\function_compose";
+const function_compose = "Improved\\function_compose";
 /** @ignore */
-const function_operator = "Ipl\\function_operator";
+const function_operator = "Improved\\function_operator";
 /** @ignore */
-const function_partial = "Ipl\\function_partial";
+const function_partial = "Improved\\function_partial";
 /** @ignore */
-const function_tail_recursion = "Ipl\\function_tail_recursion";
+const function_tail_recursion = "Improved\\function_tail_recursion";

@@ -1,14 +1,14 @@
 <?php
 
-namespace Ipl\Tests\Functions;
+namespace Improved\Tests\Functions;
 
-use function Ipl\function_get_name;
-use Ipl\Tests\CallableProviderTrait;
+use function Improved\function_get_name;
+use Improved\Tests\CallableProviderTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Ipl\function_get_name
- * @covers \Ipl\_function_get_class_name
+ * @covers \Improved\function_get_name
+ * @covers \Improved\_function_get_class_name
  */
 class FunctionGetNameTest extends TestCase
 {

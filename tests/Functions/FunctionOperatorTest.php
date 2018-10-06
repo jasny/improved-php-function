@@ -1,12 +1,12 @@
 <?php
 
-namespace Ipl\Tests\Functions;
+namespace Improved\Tests\Functions;
 
-use function Ipl\function_operator;
+use function Improved\function_operator;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Ipl\function_operator
+ * @covers \Improved\function_operator
  */
 class FunctionOperatorTest extends TestCase
 {
@@ -25,12 +25,12 @@ class FunctionOperatorTest extends TestCase
     /**
      * @dataProvider arithmeticProvider
      *
-     * @covers \Ipl\operator_addition
-     * @covers \Ipl\operator_subtraction
-     * @covers \Ipl\operator_multiplication
-     * @covers \Ipl\operator_division
-     * @covers \Ipl\operator_modulo
-     * @covers \Ipl\operator_exponentiation
+     * @covers \Improved\operator_addition
+     * @covers \Improved\operator_subtraction
+     * @covers \Improved\operator_multiplication
+     * @covers \Improved\operator_division
+     * @covers \Improved\operator_modulo
+     * @covers \Improved\operator_exponentiation
      */
     function testArithmetic($operator, $args, $expected)
     {
@@ -59,15 +59,15 @@ class FunctionOperatorTest extends TestCase
     /**
      * @dataProvider comparisonProvider
      *
-     * @covers \Ipl\operator_equal
-     * @covers \Ipl\operator_identical
-     * @covers \Ipl\operator_not_equal
-     * @covers \Ipl\operator_not_identical
-     * @covers \Ipl\operator_less_than
-     * @covers \Ipl\operator_greater_than
-     * @covers \Ipl\operator_less_than_or_equal_to
-     * @covers \Ipl\operator_greater_than_or_equal_to
-     * @covers \Ipl\operator_spaceship
+     * @covers \Improved\operator_equal
+     * @covers \Improved\operator_identical
+     * @covers \Improved\operator_not_equal
+     * @covers \Improved\operator_not_identical
+     * @covers \Improved\operator_less_than
+     * @covers \Improved\operator_greater_than
+     * @covers \Improved\operator_less_than_or_equal_to
+     * @covers \Improved\operator_greater_than_or_equal_to
+     * @covers \Improved\operator_spaceship
      */
     public function testComparison($operator, $a, $b, $c, $d, $e)
     {
@@ -98,8 +98,8 @@ class FunctionOperatorTest extends TestCase
     /**
      * @dataProvider conditionalProvider
      *
-     * @covers \Ipl\operator_ternary
-     * @covers \Ipl\operator_null_coalescing
+     * @covers \Improved\operator_ternary
+     * @covers \Improved\operator_null_coalescing
      */
     public function testConditional($operator, $args, $expected)
     {
@@ -111,7 +111,7 @@ class FunctionOperatorTest extends TestCase
     }
 
     /**
-     * @covers \Ipl\operator_concatenation
+     * @covers \Improved\operator_concatenation
      */
     public function testConcatenation()
     {
@@ -136,9 +136,9 @@ class FunctionOperatorTest extends TestCase
     /**
      * @dataProvider logicalProvider
      *
-     * @covers \Ipl\operator_and
-     * @covers \Ipl\operator_or
-     * @covers \Ipl\operator_xor
+     * @covers \Improved\operator_and
+     * @covers \Improved\operator_or
+     * @covers \Improved\operator_xor
      */
     public function testLogical($operator, $a, $b, $c, $d)
     {
@@ -163,7 +163,7 @@ class FunctionOperatorTest extends TestCase
     /**
      * @dataProvider notProvider
      *
-     * @covers \Ipl\operator_not
+     * @covers \Improved\operator_not
      */
     public function testNot($operator)
     {
@@ -188,9 +188,9 @@ class FunctionOperatorTest extends TestCase
     /**
      * @dataProvider bitwiseProvider
      *
-     * @covers \Ipl\operator_bitwise_and
-     * @covers \Ipl\operator_bitwise_or
-     * @covers \Ipl\operator_bitwise_xor
+     * @covers \Improved\operator_bitwise_and
+     * @covers \Improved\operator_bitwise_or
+     * @covers \Improved\operator_bitwise_xor
      */
     public function testBitwise($operator, $a, $b)
     {
@@ -203,7 +203,7 @@ class FunctionOperatorTest extends TestCase
     }
 
     /**
-     * @covers \Ipl\operator_bitwise_not
+     * @covers \Improved\operator_bitwise_not
      */
     public function testBitwiseNot()
     {
@@ -227,8 +227,8 @@ class FunctionOperatorTest extends TestCase
     /**
      * @dataProvider shiftOperator
      *
-     * @covers \Ipl\operator_shift_left
-     * @covers \Ipl\operator_shift_right
+     * @covers \Improved\operator_shift_left
+     * @covers \Improved\operator_shift_right
      */
     public function testShift($operator, $a)
     {

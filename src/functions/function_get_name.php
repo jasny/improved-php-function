@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ipl;
+namespace Improved;
 
 /**
  * Get the name of a callable.

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ipl;
+namespace Improved;
 
 /**
  * Create a partial function, where some the arguments have been specified.

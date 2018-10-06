@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ipl;
+namespace Improved;
 
 /**
  * Combine all functions, piping the output from one function to the input of the other.

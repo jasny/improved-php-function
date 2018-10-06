@@ -1,13 +1,13 @@
 <?php
 
-namespace Ipl\Tests\Functions;
+namespace Improved\Tests\Functions;
 
-use function Ipl\function_compose;
-use Ipl\Tests\CallableProviderTrait;
+use function Improved\function_compose;
+use Improved\Tests\CallableProviderTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Ipl\function_compose
+ * @covers \Improved\function_compose
  */
 class FunctionComposeTest extends TestCase
 {

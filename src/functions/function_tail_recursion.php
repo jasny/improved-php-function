@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ipl;
+namespace Improved;
 
 // Taken from https://github.com/lstrojny/functional-php
 

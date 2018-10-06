@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ipl;
+namespace Improved;
 
 /**
  * Get a function for an operator.
@@ -27,37 +27,37 @@ function function_operator(string $operator): callable
  * @internal
  */
 const _OPERATOR_REF_TABLE = [
-    '+'   => 'Ipl\\operator_addition',
-    '-'   => 'Ipl\\operator_subtraction',
-    '*'   => 'Ipl\\operator_multiplication',
-    '/'   => 'Ipl\\operator_division',
-    '%'   => 'Ipl\\operator_modulo',
-    '**'  => 'Ipl\\operator_exponentiation',
-    '=='  => 'Ipl\\operator_equal',
-    '===' => 'Ipl\\operator_identical',
-    '!='  => 'Ipl\\operator_not_equal',
-    '!==' => 'Ipl\\operator_not_identical',
-    '<'   => 'Ipl\\operator_less_than',
-    '>'   => 'Ipl\\operator_greater_than',
-    '<='  => 'Ipl\\operator_less_than_or_equal_to',
-    '>='  => 'Ipl\\operator_greater_than_or_equal_to',
-    '<=>' => 'Ipl\\operator_spaceship',
-    '?:'  => 'Ipl\\operator_ternary',
-    '??'  => 'Ipl\\operator_null_coalescing',
-    '.'   => 'Ipl\\operator_concatenation',
-    '&&'  => 'Ipl\\operator_and',
-    'and' => 'Ipl\\operator_and',
-    '||'  => 'Ipl\\operator_or',
-    'or'  => 'Ipl\\operator_or',
-    'xor' => 'Ipl\\operator_xor',
-    '!'   => 'Ipl\\operator_not',
-    'not' => 'Ipl\\operator_not',
-    '&'   => 'Ipl\\operator_bitwise_and',
-    '|'   => 'Ipl\\operator_bitwise_or',
-    '^'   => 'Ipl\\operator_bitwise_xor',
-    '~'   => 'Ipl\\operator_bitwise_not',
-    '<<'  => 'Ipl\\operator_shift_left',
-    '>>'  => 'Ipl\\operator_shift_right'
+    '+'   => 'Improved\\operator_addition',
+    '-'   => 'Improved\\operator_subtraction',
+    '*'   => 'Improved\\operator_multiplication',
+    '/'   => 'Improved\\operator_division',
+    '%'   => 'Improved\\operator_modulo',
+    '**'  => 'Improved\\operator_exponentiation',
+    '=='  => 'Improved\\operator_equal',
+    '===' => 'Improved\\operator_identical',
+    '!='  => 'Improved\\operator_not_equal',
+    '!==' => 'Improved\\operator_not_identical',
+    '<'   => 'Improved\\operator_less_than',
+    '>'   => 'Improved\\operator_greater_than',
+    '<='  => 'Improved\\operator_less_than_or_equal_to',
+    '>='  => 'Improved\\operator_greater_than_or_equal_to',
+    '<=>' => 'Improved\\operator_spaceship',
+    '?:'  => 'Improved\\operator_ternary',
+    '??'  => 'Improved\\operator_null_coalescing',
+    '.'   => 'Improved\\operator_concatenation',
+    '&&'  => 'Improved\\operator_and',
+    'and' => 'Improved\\operator_and',
+    '||'  => 'Improved\\operator_or',
+    'or'  => 'Improved\\operator_or',
+    'xor' => 'Improved\\operator_xor',
+    '!'   => 'Improved\\operator_not',
+    'not' => 'Improved\\operator_not',
+    '&'   => 'Improved\\operator_bitwise_and',
+    '|'   => 'Improved\\operator_bitwise_or',
+    '^'   => 'Improved\\operator_bitwise_xor',
+    '~'   => 'Improved\\operator_bitwise_not',
+    '<<'  => 'Improved\\operator_shift_left',
+    '>>'  => 'Improved\\operator_shift_right'
 ];
 
 /**

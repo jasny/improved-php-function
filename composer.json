@@ -1,5 +1,5 @@
 {
-    "name": "ipl/function",
+    "name": "improved/function",
     "description": "Function handling and functional programming",
     "license": "MIT",
     "type": "library",
@@ -34,11 +34,11 @@
         ]
     },
     "provides": {
-        "ext-ipl_function": "*"
+        "ext-improved_function": "*"
     },
     "autoload-dev": {
         "psr-4": {
-            "Ipl\\Tests\\": "tests/"
+            "Improved\\Tests\\": "tests/"
         }
     },
     "scripts": {

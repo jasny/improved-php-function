@@ -1,26 +1,23 @@
 ![improved PHP library](https://user-images.githubusercontent.com/100821/46372249-e5eb7500-c68a-11e8-801a-2ee57da3e5e3.png)
 
-IPL function handling
-===
+# Improved Function Handling
 
 [![Build Status](https://travis-ci.org/improved-php-library/function.svg?branch=master)](https://travis-ci.org/improved-php-library/function)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/improved-php-library/function/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/improved-php-library/function/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/improved-php-library/function/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/improved-php-library/function/?branch=master)
-[![Packagist Stable Version](https://img.shields.io/packagist/v/ipl/function.svg)](https://packagist.org/packages/ipl/function)
-[![Packagist License](https://img.shields.io/packagist/l/ipl/function.svg)](https://packagist.org/packages/ipl/function)
+[![Packagist Stable Version](https://img.shields.io/packagist/v/improved/function.svg)](https://packagist.org/packages/improved/function)
+[![Packagist License](https://img.shields.io/packagist/l/improved/function.svg)](https://packagist.org/packages/improved/function)
 
 Library for function handling and functional programming.
 
 This library provides a set of consistent functions for PHP. You should always use these functions rather than the ones
 provided by PHP natively.
 
-Installation
----
+## Installation
 
-    composer require ipl/function
+    composer require improved/function
 
-Functions
----
+## Functions
 
 * [`function_call(callable $callable, mixed ...$args)`](#function_call)
 * [`function_call_named(callable $callable, array $args)`](#function_call_named)
@@ -29,13 +26,11 @@ Functions
 * [`function_compose(callable ...$callables)`](#function_compose)
 * [`function_tail_recursion(callable $callable)`](#function_tail_recursion)
 
-Constants
----
+## Constants
 
 * `FUNCTION_ARGUMENT_PLACEHOLDER` - Resource that represents a placeholder for a partial function
 
-Reference
----
+## Reference
 
 ### function_call
 
@@ -226,8 +221,7 @@ nesting. Unfortunately this isn't implemented by PHP, so wrapping it in `functio
 
 **Use `function_tail_recursion` in case of deep recursion (10+ levels).**
 
-Notes to reader
----
+## Notes to reader
 
 Instead of `function_exists` use `is_callable()`.
 

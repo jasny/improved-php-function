@@ -1,12 +1,12 @@
 <?php
 
-namespace Ipl\Tests\Functions;
+namespace Improved\Tests\Functions;
 
-use function Ipl\function_tail_recursion;
+use function Improved\function_tail_recursion;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Ipl\function_tail_recursion
+ * @covers \Improved\function_tail_recursion
  */
 class FunctionTailRecursionTest extends TestCase
 {

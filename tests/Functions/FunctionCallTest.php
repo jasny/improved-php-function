@@ -1,13 +1,13 @@
 <?php
 
-namespace Ipl\Tests\Functions;
+namespace Improved\Tests\Functions;
 
-use function Ipl\function_call;
-use Ipl\Tests\CallableProviderTrait;
+use function Improved\function_call;
+use Improved\Tests\CallableProviderTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Ipl\function_call
+ * @covers \Improved\function_call
  */
 class FunctionCallTest extends TestCase
 {

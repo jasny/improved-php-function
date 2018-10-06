@@ -1,14 +1,14 @@
 <?php
 
-namespace Ipl\Tests\Functions;
+namespace Improved\Tests\Functions;
 
-use const Ipl\function_operator;
-use function Ipl\function_partial;
-use const Ipl\FUNCTION_ARGUMENT_PLACEHOLDER as ___;
+use const Improved\function_operator;
+use function Improved\function_partial;
+use const Improved\FUNCTION_ARGUMENT_PLACEHOLDER as ___;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Ipl\function_partial
+ * @covers \Improved\function_partial
  */
 class FunctionPartialTest extends TestCase
 {
@@ -120,7 +120,7 @@ class FunctionPartialTest extends TestCase
      */
     public function testTypeError($nonCallable, $type)
     {
-        $this->expectExceptionMessage("Argument 1 passed to Ipl\\function_partial() must be callable, $type given");
+        $this->expectExceptionMessage("Argument 1 passed to Improved\\function_partial() must be callable, $type given");
 
         function_partial($nonCallable);
     }
