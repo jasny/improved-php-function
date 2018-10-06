@@ -153,8 +153,8 @@ The callable may also be an operator. The following are equivalent:
 use Improved as i;
 use const Improved\FUNCTION_ARGUMENT_PLACEHOLDER as ___;
 
-$tenthOf = function_partial(function_operator('/'), ___, 10));
-$tenthOf = function_partial('/', ___, 10);
+$tenthOf = i\function_partial(function_operator('/'), ___, 10));
+$tenthOf = i\function_partial('/', ___, 10);
 ```
 
 No reflection is performed on the callable. Only the placeholders will be present as arguments. Additional arguments are
@@ -225,8 +225,8 @@ nesting. Unfortunately this isn't implemented by PHP, so wrapping it in `functio
 
 Instead of `function_exists` use `is_callable()`.
 
-The functions to get arguments (`func_get_args`, etc) or to pass args as array are not included. The `...$args` syntax
-is preferred.
+The functions to get arguments (`func_get_args`, etc) or to pass args as array can't easily be included because they
+depend on the current call stack. The `...$args` syntax is preferred anyway.
 
 ```php
 // Don't do this
