@@ -153,8 +153,8 @@ The callable may also be an operator. The following are equivalent:
 use Improved as i;
 use const Improved\FUNCTION_ARGUMENT_PLACEHOLDER as ___;
 
-$tenthOf = i\function_partial(function_operator('/'), ___, 10));
 $tenthOf = i\function_partial('/', ___, 10);
+$tenthOf = i\function_partial(i\function_operator('/'), ___, 10));
 ```
 
 No reflection is performed on the callable. Only the placeholders will be present as arguments. Additional arguments are
