@@ -24,17 +24,16 @@
         "files": [
             "src/constants.php",
             "src/functions-const.php",
+            "src/functions/function_all.php",
             "src/functions/function_call.php",
             "src/functions/function_call_named.php",
             "src/functions/function_compose.php",
             "src/functions/function_get_name.php",
             "src/functions/function_operator.php",
+            "src/functions/function_pipe.php",
             "src/functions/function_partial.php",
             "src/functions/function_tail_recursion.php"
         ]
-    },
-    "provides": {
-        "ext-improved_function": "*"
     },
     "autoload-dev": {
         "psr-4": {

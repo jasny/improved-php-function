@@ -7,13 +7,25 @@ namespace Improved;
 /**
  * Do a function call with named parameters.
  *
- * @param callable $callable
- * @param array    $namedArgs
+ * @param callable            $callable
+ * @param array<string,mixed> $namedArgs
  * @return mixed
+ * @throws \ReflectionException
  */
 function function_call_named(callable $callable, array $namedArgs)
 {
-    $params = _function_get_params($callable);
+    if (is_string($callable) && strpos($callable, '::') !== false) {
+        $source = explode('::', $callable, 2);
+    } elseif (is_object($callable) && !$callable instanceof \Closure) {
+        $source = [$callable, '__invoke'];
+    } else {
+        $source = $callable;
+    }
+
+    $refl = is_array($source)
+        ? new \ReflectionMethod($source[0], $source[1])
+        : new \ReflectionFunction($source);
+    $params = $refl->getParameters();
 
     $args = [];
     $missing = [];
@@ -38,31 +50,4 @@ function function_call_named(callable $callable, array $namedArgs)
     }
 
     return $callable(...array_slice($args, 0, $max));
-}
-
-/**
- * @internal
- *
- * @param callable $callable
- * @return \ReflectionParameter[]
- */
-function _function_get_params(callable $callable): array
-{
-    if (is_string($callable) && strpos($callable, '::') !== false) {
-        $source = explode('::', $callable, 2);
-    } elseif (is_object($callable) && !$callable instanceof \Closure) {
-        $source = [$callable, '__invoke'];
-    } else {
-        $source = $callable;
-    }
-
-    if (is_string($source) || $source instanceof \Closure) {
-        $refl = new \ReflectionFunction($source);
-    } elseif (is_array($source)) {
-        $refl = new \ReflectionMethod($source[0], $source[1]);
-    } else {
-        throw new \TypeError("Unknown callable type " . gettype($callable)); // @codeCoverageIgnore
-    }
-
-    return $refl->getParameters();
 }

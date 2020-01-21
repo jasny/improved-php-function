@@ -6,6 +6,7 @@ namespace Improved;
 
 /**
  * Call a function, method, closure or any other callable.
+ * @deprecated
  *
  * @param callable $callable
  * @param mixed ...$args

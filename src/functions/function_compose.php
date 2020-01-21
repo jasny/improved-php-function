@@ -6,17 +6,13 @@ namespace Improved;
 
 /**
  * Combine all functions, piping the output from one function to the input of the other.
+ * @deprecated
+ * @see function_pipe()
  *
- * @param callable ...$callables
+ * @param callable ...$functions
  * @return callable
  */
-function function_compose(callable ...$callables): callable
+function function_compose(callable ...$functions): callable
 {
-    return function ($value) use ($callables) {
-        foreach ($callables as $callable) {
-            $value = $callable($value);
-        }
-
-        return $value;
-    };
+    return function_pipe(...$functions);
 }

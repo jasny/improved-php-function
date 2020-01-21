@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Improved\function_call_named
- * @covers \Improved\_function_get_params
  */
 class FunctionCallNamedTest extends TestCase
 {

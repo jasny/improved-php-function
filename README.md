@@ -10,59 +10,18 @@
 
 Library for function handling and functional programming.
 
-This library provides a set of consistent functions for PHP. You should always use these functions rather than the ones
-provided by PHP natively.
-
 ## Installation
 
     composer require improved/function
 
 ## Functions
 
-* [`function_call(callable $callable, mixed ...$args)`](#function_call)
 * [`function_call_named(callable $callable, array $args)`](#function_call_named)
-* [`function_operator(string $operator)`](#function_operator)
-* [`function_partial(callable|string $callable, mixed ...$args)`](#function_partial)
-* [`function_compose(callable ...$callables)`](#function_compose)
+* [`function_pipe(callable ...$callables)`](#function_pipe)
+* [`function_all(callable ...$callables)`](#function_all)
 * [`function_tail_recursion(callable $callable)`](#function_tail_recursion)
 
-## Constants
-
-* `FUNCTION_ARGUMENT_PLACEHOLDER` - Resource that represents a placeholder for a partial function
-
 ## Reference
-
-### function_call
-
-    mixed function_call(callable $callable, mixed ...$args)
-    
-Call a function, method, closure or any other callable.
-
-If the callable is a variable you can typically call it directly and don't need to use this function. This method is
-useful when the callable is a property.
-
-```php
-use Improved as i;
-
-class Foo
-{
-    public $fn = i\string_length;
-    
-    public function wrong($val)
-    {
-        return $this->fn($val); 
-    }
-    
-    public function right($val)
-    {
-        return i\function_call($this->fn, $val); 
-    }
-}
-
-$foo = new Foo();
-$foo->wrong("hello"); // Error: Call to undefined method Foo::fn()
-$foo->right("hello"); // 5
-```
 
 ### function_call_named
 
@@ -71,115 +30,70 @@ $foo->right("hello"); // 5
 Do a function call with named parameters.
 
 ```php
-function greet(string $greeting, string $planet, string $exclation = '') {
-    return $greeting . ' ' . $planet . $exlamation;
+use Improved as i;
+
+function greet(string $greeting, string $planet, string $exclamation = '') {
+    return $greeting . ' ' . $planet . $exclamation;
 };
 
-function_call_named('greet', ['planet' => 'world', 'exclamation' => '!', 'greeting' => 'hello']);
+i\function_call_named('greet', ['planet' => 'world', 'exclamation' => '!', 'greeting' => 'hello']);
 ```
 
 If one or more required arguments aren't supplied, an `ArgumentCountError` is thrown.
 
 ```php
-function_call_named('greet', ['planet' => 'world']);
+i\function_call_named('greet', ['planet' => 'world']);
 // ArgumentCountError: To few arguments to function {closure}(): missing greeting
 ```
 
+### function_pipe
 
-### function_operator
-
-    callable function_operator(string $operator)
-
-Get a function for an operator.
-
-This is a short and more readable way to create simple callbacks for operators.
-
-The following operators are supported:
-
-| Operator types                                               |                                                |
-| ------------------------------------------------------------ | ---------------------------------------------- |
-| [Arithmetic Operators](https://php.net/operators.arithmetic) | `+`, `-`, `*`, `/`, `%`, `**`                  |
-| [Bitwise Operators](https://php.net/operators.bitwise)       | `&`, `∣`, `^`, `~`, `<<`, `>>`                 |
-| [Comparison Operators](https://php.net/operators.comparison) | `==`, `===`, `!=`, `!==`, `<`, `>`, `<=`, `>=` |
-| [Conditional Operators][1]                                   | `?:`, `??`                                |
-| [Logical Operators](https://php.net/operators.logical)       | `and`/`&&`, `or`/`∣∣`, `xor`, `!`/`not`        |
-| [String Operator](https://php.net/operators.string)          | `.`                                            |
-
-The function for following operators take one argument: `~`, `!`/`not`. The others take two arguments. 
-
-```php
-$product = i\iterable_reduce($list, function($a, $b) {
-    return $a * $b;
-}, 1);
-```
-
-Can be rewritten as 
-
-```php
-$product = i\iterable_reduce($list, i\function_operator('*'), 1);
-``` 
-
-[1]: http://php.net/manual/en/language.operators.comparison.php#language.operators.comparison.ternary
-
-### function_partial
-
-    callable function_partial(callable|string $callable, mixed ...$args)
-
-Create a partial function, where some the arguments have been specified.
-
-The returned closure requires an argument for each placeholder, which is defined as constant
-`Improved\FUNCTION_ARGUMENT_PLACEHOLDER`. Typically create an alias `___` for it with the `use const` syntax.
-
-```php
-use Improved as i;
-
-$fn = function($word) {
-    return i\string_ends_with($word, 'th');
-};
-```
-
-Can be rewritten as
-
-```php
-use Improved as i;
-use const Improved\FUNCTION_ARGUMENT_PLACEHOLDER as ___;
-
-$fn = i\function_partial(i\string_ends_with, ___, 'th');
-``` 
-
-The callable may also be an operator. The following are equivalent:
-
-```php
-use Improved as i;
-use const Improved\FUNCTION_ARGUMENT_PLACEHOLDER as ___;
-
-$tenthOf = i\function_partial('/', ___, 10);
-$tenthOf = i\function_partial(i\function_operator('/'), ___, 10));
-```
-
-No reflection is performed on the callable. Only the placeholders will be present as arguments. Additional arguments are
-not passed. If no placeholders are passed the result will just be a closure of the callable.
-
-_It's not possible to create a closure with optional arguments or to change the argument order. If your callback
-doesn't adhere to these conditions, create a closure via `function() { }` instead._
-
-### function_compose
-
-    callable function_compose(callable ...$callables)
+    callable function_pipe(callable ...$functions)
 
 Combine all functions, piping the output from one function to the input of the other.
 
-Each callable should only require one argument, use `function_partial()` if needed.
+Each callable should only require one argument, use short closures `fn()` if needed.
 
 ```php
-$slugify = i\function_compose(
-    i\function_partial(i\string_case_convert, ___, i\STRING_LOWERCASE),
-    i\string_remove_accents,
-    i\string_trim,
-    i\function_partial('preg_replace', '\W+', '-', ___)
+use Improved as i;
+
+$slugify = i\function_pipe(
+    fn($str) => i\string_case_convert($str, i\STRING_LOWERCASE),
+    'Improved/string_remove_accents',
+    'trim',
+    fn($str) => preg_replace('/\W+/', '-', $str)
 );
 
-$slugify("Bonjour du monde / Français "); // "bonjour-du-mondo-francais" 
+$slugify("Bonjour du monde / Français "); // "bonjour-du-monde-francais" 
+```
+
+### function_all
+
+    callable function_all(callable ...$functions)
+
+Call all functions sequentially. The arguments are passed to each function. The first argument is typically an
+accumulator.
+
+Functions are expected to not return anything (void). If anything is returned, it's ignored.
+
+```php
+use Improved as i;
+
+$make = i\function_all(
+    static function(ArrayObject $acc, array $opts): void {
+        if (in_array('skip-prepare', $opts, true)) return;
+        $acc[] = 'prepare';
+    },
+    new Compiler(), // Invokable object
+    static function(ArrayObject $acc, array $opts): void {
+        $acc[] = 'finish';
+    }
+);
+
+$acc = new ArrayObject();
+$opts = [/* ... */];
+
+$make($acc, $opts);
 ```
 
 ### function_tail_recursion

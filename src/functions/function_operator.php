@@ -6,6 +6,7 @@ namespace Improved;
 
 /**
  * Get a function for an operator.
+ * @deprecated
  *
  * @param string $operator
  * @return callable

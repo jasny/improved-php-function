@@ -6,6 +6,7 @@ namespace Improved;
 
 /**
  * Create a partial function, where some the arguments have been specified.
+ * @deprecated
  *
  * @param callable|string $callable
  * @param mixed           ...$args

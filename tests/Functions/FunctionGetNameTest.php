@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Improved\function_get_name
- * @covers \Improved\_function_get_class_name
  */
 class FunctionGetNameTest extends TestCase
 {
