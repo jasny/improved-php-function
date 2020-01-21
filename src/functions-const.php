@@ -8,16 +8,20 @@ declare(strict_types=1);
 namespace Improved;
 
 /** @internal */
-const oved\function_call = "Improved\\oved\function_call";
+const function_all = "Improved\\function_all";
 /** @internal */
-const oved\function_call_named = "Improved\\oved\function_call_named";
+const function_call = "Improved\\function_call";
 /** @internal */
-const oved\function_compose = "Improved\\oved\function_compose";
+const function_call_named = "Improved\\function_call_named";
 /** @internal */
-const oved\function_get_name = "Improved\\oved\function_get_name";
+const function_compose = "Improved\\function_compose";
 /** @internal */
-const oved\function_operator = "Improved\\oved\function_operator";
+const function_get_name = "Improved\\function_get_name";
 /** @internal */
-const oved\function_partial = "Improved\\oved\function_partial";
+const function_operator = "Improved\\function_operator";
 /** @internal */
-const oved\function_tail_recursion = "Improved\\oved\function_tail_recursion";
+const function_pipe = "Improved\\function_pipe";
+/** @internal */
+const function_partial = "Improved\\function_partial";
+/** @internal */
+const function_tail_recursion = "Improved\\function_tail_recursion";

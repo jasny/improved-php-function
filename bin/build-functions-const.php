@@ -16,7 +16,7 @@ foreach ($userFunctions as $function) {
 $code = ["<?php\n\n/** @ignoreFile */\n// phpcs:ignoreFile\n\ndeclare(strict_types=1);\n\nnamespace Improved;\n"];
 
 foreach ($functions as $function) {
-    $fnName = substr($function, 4);
+    $fnName = substr($function, strlen('Improved\\'));
     $code[] = "/** @internal */\n" . sprintf('const %1$s = "Improved\\\\%1$s";', $fnName);
 }
 
