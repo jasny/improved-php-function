@@ -18,7 +18,9 @@ class FunctionCallNamedTest extends TestCase
      */
     public function test($callable)
     {
-        $result = function_call_named($callable, ['str' => 'Hello World!']);
+        $param = $callable === 'strtoupper' && version_compare(phpversion(), '8', '<') ? 'str' : 'string';
+    
+        $result = function_call_named($callable, [$param => 'Hello World!']);
 
         $this->assertSame('HELLO WORLD!', $result);
     }
@@ -42,9 +44,11 @@ class FunctionCallNamedTest extends TestCase
 
     public function strTrNamedArgProvider()
     {
+        $param = version_compare(phpversion(), '8', '<') ? 'str' : 'string';
+        
         return [
-            ['yzywyzyny', ['str' => 'abawabana', 'from' => 'ab', 'to' => 'yz']],
-            ['yzywyzyny', ['str' => 'abawabana', 'from' => ['a' => 'y', 'b' => 'z']]],
+            ['yzywyzyny', [$param => 'abawabana', 'from' => 'ab', 'to' => 'yz']],
+            ['yzywyzyny', [$param => 'abawabana', 'from' => ['a' => 'y', 'b' => 'z']]],
         ];
     }
 

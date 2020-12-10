@@ -44,15 +44,15 @@ class FunctionOperatorTest extends TestCase
     public function comparisonProvider()
     {
         return [
-            ['==',  true, true, false, false, false],
-            ['===', true, false, false, false, false],
-            ['!=',  false, false, true, true, true],
-            ['!==', false, true, true, true, true],
-            ['<',   false, false, false, true, false],
-            ['>',   false, false, true, false, true],
-            ['<=',  true, true, false, true, false],
-            ['>=',  true, true, true, false, true],
-            ['<=>', 0, 0, 1, -1, 1]
+            ['==',  true, true, false, false],
+            ['===', true, false, false, false],
+            ['!=',  false, false, true, true],
+            ['!==', false, true, true, true],
+            ['<',   false, false, true, false],
+            ['>',   false, false, false, true],
+            ['<=',  true, true, true, false],
+            ['>=',  true, true, false, true],
+            ['<=>', 0, 0, -1, 1]
         ];
     }
 
@@ -69,17 +69,16 @@ class FunctionOperatorTest extends TestCase
      * @covers \Improved\operator_greater_than_or_equal_to
      * @covers \Improved\operator_spaceship
      */
-    public function testComparison($operator, $a, $b, $c, $d, $e)
+    public function testComparison($operator, $a, $b, $c, $d)
     {
         $fn = function_operator($operator);
 
         $this->assertTrue(is_callable($fn), 'is_callable');
 
-        $this->assertEquals($a, $fn(42, 42), "'$operator' operator");
-        $this->assertEquals($b, $fn(42, '42'), "'$operator' operator");
-        $this->assertEquals($c, $fn(42, 'foo'), "'$operator' operator");
-        $this->assertEquals($d, $fn(42, 100), "'$operator' operator");
-        $this->assertEquals($e, $fn(42, -5), "'$operator' operator");
+        $this->assertEquals($a, $fn(42, 42), "42 $operator 42");
+        $this->assertEquals($b, $fn(42, '42'), "42 $operator '42'");
+        $this->assertEquals($c, $fn(42, 100), "42 $operator 100");
+        $this->assertEquals($d, $fn(42, -5), "42 $operator -5");
     }
 
     public function conditionalProvider()

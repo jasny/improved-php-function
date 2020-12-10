@@ -9,9 +9,9 @@ namespace Improved\Tests;
  */
 trait CallableProviderTrait
 {
-    static public function toUpper($str)
+    static public function toUpper($string)
     {
-        return strtoupper($str);
+        return strtoupper($string);
     }
 
     /**
@@ -19,19 +19,19 @@ trait CallableProviderTrait
      */
     public function callableProvider()
     {
-        $closure = function($str) {
-            return strtoupper($str);
+        $closure = function($string) {
+            return strtoupper($string);
         };
 
         $object = new class() {
-            function toUpper($str) {
-                return strtoupper($str);
+            function toUpper($string) {
+                return strtoupper($string);
             }
         };
 
         $invokable = new class() {
-            function __invoke($str) {
-                return strtoupper($str);
+            function __invoke($string) {
+                return strtoupper($string);
             }
         };
 
