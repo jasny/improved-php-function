@@ -18,10 +18,11 @@
         "php": ">=7.2.0"
     },
     "require-dev": {
-        "jasny/php-code-quality": "~2.7.0"
+        "jasny/php-code-quality": "~2.6.0"
     },
     "autoload": {
         "files": [
+            "src/constants.php",
             "src/functions/function_all.php",
             "src/functions/function_call.php",
             "src/functions/function_call_named.php",

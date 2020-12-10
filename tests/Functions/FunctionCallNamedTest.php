@@ -65,21 +65,20 @@ class FunctionCallNamedTest extends TestCase
 
     /**
      * @dataProvider callableProvider
-     * @expectedException \ArgumentCountError
      */
     public function testMissing($callable, $name)
     {
+        $this->expectException(\ArgumentCountError::class);
         $this->expectExceptionMessage("Too few arguments to function $name(), missing str");
 
         function_call_named($callable, []);
     }
 
-    /**
-     * @expectedException \ArgumentCountError
-     * @expectedExceptionMessage Too few arguments to function str_replace(), missing search
-     */
     public function testStrReplaceMissing()
     {
+        $this->expectException(\ArgumentCountError::class);
+        $this->expectExceptionMessage("Too few arguments to function str_replace(), missing search");
+    
         function_call_named('str_replace', ['subject' => 'foo', 'replace' => 'o']);
     }
 }

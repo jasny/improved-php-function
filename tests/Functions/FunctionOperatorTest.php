@@ -239,12 +239,11 @@ class FunctionOperatorTest extends TestCase
         $this->assertEquals($a, $fn(0b00101000, 2), "'$operator' operator");
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Failed to create callable from operator: unknown or unsupported operator '='
-     */
     function testAssignment()
     {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage("Failed to create callable from operator: unknown or unsupported operator '='");
+        
         function_operator('=');
     }
 }

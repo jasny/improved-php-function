@@ -36,7 +36,7 @@ class FunctionPartialTest extends TestCase
         };
 
         return [
-            ['str_replace', ],
+            ['str_replace', 'str_replace'],
             [$closure, '{closure}'],
             [[__CLASS__, 'stringReplace'], get_called_class() . '::stringReplace'],
             [__CLASS__ . '::stringReplace', get_called_class() . '::stringReplace'],
@@ -95,10 +95,10 @@ class FunctionPartialTest extends TestCase
 
     /**
      * @dataProvider provider
-     * @expectedException \ArgumentCountError
      */
     public function testMissingArguments($callable, $type)
     {
+        $this->expectException(\ArgumentCountError::class);
         $this->expectExceptionMessage("Too few arguments to function {$type}(), 1 passed while 2 expected");
 
         $fn = function_partial($callable, ___, ___, 'hello sweet world');
@@ -116,10 +116,10 @@ class FunctionPartialTest extends TestCase
 
     /**
      * @dataProvider nonCallableProvider
-     * @expectedException TypeError
      */
     public function testTypeError($nonCallable, $type)
     {
+        $this->expectException(\TypeError::class);
         $this->expectExceptionMessage("Argument 1 passed to Improved\\function_partial() must be callable, $type given");
 
         function_partial($nonCallable);
