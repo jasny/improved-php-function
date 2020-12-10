@@ -22,8 +22,6 @@
     },
     "autoload": {
         "files": [
-            "src/constants.php",
-            "src/functions-const.php",
             "src/functions/function_all.php",
             "src/functions/function_call.php",
             "src/functions/function_call_named.php",
