@@ -4,11 +4,10 @@ namespace Improved\Tests\Functions;
 
 use Improved as i;
 use Improved\Tests\CallableProviderTrait;
+use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Improved\function_all
- */
+#[CoversFunction('Improved\function_all')]
 class FunctionAllTest extends TestCase
 {
     use CallableProviderTrait;

@@ -2,17 +2,16 @@
 
 namespace Improved\Tests\Functions;
 
-use function Improved\function_tail_recursion;
+use PHPUnit\Framework\Attributes\CoversFunction;
+use function Improved\function_trampoline;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Improved\function_tail_recursion
- */
-class FunctionTailRecursionTest extends TestCase
+#[CoversFunction('Improved\function_trampoline')]
+class FunctionTrampolineTest extends TestCase
 {
     public function test()
     {
-        $sum_of_range = function_tail_recursion(function ($from, $to, $acc = 0) use (&$sum_of_range) {
+        $sum_of_range = function_trampoline(function ($from, $to, $acc = 0) use (&$sum_of_range) {
             if ($from > $to) {
                 return $acc;
             }

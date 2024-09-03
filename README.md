@@ -2,9 +2,9 @@
 
 # function handling
 
-![PHP](https://github.com/improved-php-library/function/workflows/PHP/badge.svg)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/improved-php-library/function/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/improved-php-library/function/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/improved-php-library/function/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/improved-php-library/function/?branch=master)
+![PHP](https://github.com/jasny/improved-php-function/workflows/PHP/badge.svg)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jasny/improved-php-function/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/improved-php-library/function/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/jasny/improved-php-function/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/improved-php-library/function/?branch=master)
 [![Packagist Stable Version](https://img.shields.io/packagist/v/improved/function.svg)](https://packagist.org/packages/improved/function)
 [![Packagist License](https://img.shields.io/packagist/l/improved/function.svg)](https://packagist.org/packages/improved/function)
 
@@ -16,35 +16,9 @@ Library for function handling and functional programming.
 
 ## Functions
 
-* [`function_call_named(callable $callable, array $args)`](#function_call_named)
 * [`function_pipe(callable ...$callables)`](#function_pipe)
 * [`function_all(callable ...$callables)`](#function_all)
-* [`function_tail_recursion(callable $callable)`](#function_tail_recursion)
-
-## Reference
-
-### function_call_named
-
-    mixed function_call_named(callable $callable, array $namedArgs)
-    
-Do a function call with named parameters.
-
-```php
-use Improved as i;
-
-function greet(string $greeting, string $planet, string $exclamation = '') {
-    return $greeting . ' ' . $planet . $exclamation;
-};
-
-i\function_call_named('greet', ['planet' => 'world', 'exclamation' => '!', 'greeting' => 'hello']);
-```
-
-If one or more required arguments aren't supplied, an `ArgumentCountError` is thrown.
-
-```php
-i\function_call_named('greet', ['planet' => 'world']);
-// ArgumentCountError: To few arguments to function {closure}(): missing greeting
-```
+* [`function_trampoline(callable $callable)`](#function_tail_recursion)
 
 ### function_pipe
 
@@ -96,11 +70,11 @@ $opts = [/* ... */];
 $make($acc, $opts);
 ```
 
-### function_tail_recursion
+### function_trampoline
 
-    callable function_tail_recursion(callable $callable)
+    callable function_trampoline(callable $callable)
 
-Return an new function that decorates given function with tail recursion optimization.
+Return a new function that decorates given function with tail recursion optimization.
 
 In traditional recursion, the typical model is that you perform your recursive calls first, and then you take the return
 value of the recursive call and calculate the result. In this manner, you don't get the result of your calculation until
@@ -119,7 +93,7 @@ The result is calculated via the accumulator, so the return value of any given r
 value of the next recursive call.
 
 ```php
-$sum_of_range = i\function_tail_recursion(function ($from, $to, $acc = 0) use (&$sum_of_range) {
+$sum_of_range = i\function_trampoline(function ($from, $to, $acc = 0) use (&$sum_of_range) {
     if ($from > $to) {
         return $acc;
     }
@@ -131,34 +105,6 @@ $sum_of_range(1, 10000); // 50005000;
 ```
 
 Tail recursion optimization can automatically detect such a pattern and apply this as a consecutive call rather than
-nesting. Unfortunately this isn't implemented by PHP, so wrapping it in `function_tail_recursion()` is required.
+nesting. Unfortunately this isn't implemented by PHP, so using a trampoline function is required.
 
-**Use `function_tail_recursion` in case of deep recursion (10+ levels).**
-
-## Notes to reader
-
-Instead of `function_exists` use `is_callable()`.
-
-The functions to get arguments (`func_get_args`, etc) or to pass args as array can't easily be included because they
-depend on the current call stack. The `...$args` syntax is preferred anyway.
-
-```php
-// Don't do this
-function ($bar) {
-    $rest = array_slice(func_get_args(), 1);
-    // ...
-}
-
-// Do this instead
-function ($bar, ...$rest) {
-    // ...
-}
-```
-
-```php
-// Don't do this
-call_user_func_array('some_function', $myArgs);
-
-// Do this instead
-some_function(...$myArgs);
-```
+**Use `function_trampoline` in case of deep recursion (10+ levels).**

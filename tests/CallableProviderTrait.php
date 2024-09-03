@@ -17,7 +17,7 @@ trait CallableProviderTrait
     /**
      * @return callable[]
      */
-    public function callableProvider()
+    public static function callableProvider()
     {
         $closure = function($string) {
             return strtoupper($string);

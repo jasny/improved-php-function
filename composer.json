@@ -1,56 +1,52 @@
 {
-    "name": "improved/function",
-    "description": "Function handling and functional programming",
-    "license": "MIT",
-    "type": "library",
-    "authors": [
-        {
-            "name": "Arnold Daniels",
-            "email": "arnold@jasny.net",
-            "homepage": "http://www.jasny.net"
-        }
-    ],
-    "support": {
-        "issues": "https://github.com/improved-php-library/function/issues",
-        "source": "https://github.com/improved-php-library/function"
-    },
-    "require": {
-        "php": ">=7.2.0"
-    },
-    "require-dev": {
-        "jasny/php-code-quality": "~2.6.0 || ~2.7.0"
-    },
-    "autoload": {
-        "files": [
-            "src/constants.php",
-            "src/functions/function_all.php",
-            "src/functions/function_call.php",
-            "src/functions/function_call_named.php",
-            "src/functions/function_compose.php",
-            "src/functions/function_get_name.php",
-            "src/functions/function_operator.php",
-            "src/functions/function_pipe.php",
-            "src/functions/function_partial.php",
-            "src/functions/function_tail_recursion.php"
-        ]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Improved\\Tests\\": "tests/"
-        }
-    },
-    "scripts": {
-        "test": [
-            "phpstan analyse",
-            "phpunit",
-            "phpcs -p src"
-        ]
-    },
-    "config": {
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "optimize-autoloader": true
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+  "name": "improved/function",
+  "description": "Function handling and functional programming",
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Arnold Daniels",
+      "email": "arnold@jasny.net",
+      "homepage": "https://www.jasny.net"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/improved-php-library/function/issues",
+    "source": "https://github.com/improved-php-library/function"
+  },
+  "require": {
+    "php": ">=8.1.0"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^1.12",
+    "phpunit/phpunit": ">= 10.5, < 12",
+    "squizlabs/php_codesniffer": "^3.10"
+  },
+  "autoload": {
+    "files": [
+      "src/functions/function_all.php",
+      "src/functions/function_pipe.php",
+      "src/functions/function_tail_recursion.php",
+      "src/functions/function_trampoline.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Improved\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": [
+      "phpstan analyse",
+      "XDEBUG_MODE=coverage phpunit --testdox --colors=always --coverage-text",
+      "phpcs -p src"
+    ]
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "optimize-autoloader": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }

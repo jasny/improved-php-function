@@ -2,8 +2,7 @@ parameters:
     level: 7
     paths:
         - src
+    treatPhpDocTypesAsCertain: false
+    reportUnmatchedIgnoredErrors: false
     ignoreErrors:
-        - "#Negated boolean is always true#"
-includes:
-  	- vendor/phpstan/phpstan-strict-rules/rules.neon
-
+        - /^Negated boolean expression is always true/
